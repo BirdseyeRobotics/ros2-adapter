@@ -13,10 +13,12 @@ services:
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+    depends_on:
+      - formant-agent
 
   formant-agent:
     image: formant/agent
-    build: .
+    container_name: formant-agent
     network_mode: host
     pid: host
     privileged: true
