@@ -1,1 +1,31 @@
-{}
+{
+    "ros2_adapter_configuration": {
+        "subscribers": [
+            {
+                "ros2_topic": "/bird_output_compressed",
+                "formant_stream": "bird.image"
+            },
+            {
+                "ros2_topic": "/windshield_image",
+                "formant_stream": "windshield.image"
+            }
+        ],
+        "publishers": [
+            {
+                "formant_stream": "estop",
+                "ros2_topic": "/disable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "unlock",
+                "ros2_topic": "/enable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "joystick",
+                "ros2_topic": "/odrive/cmd_vel",
+                "ros2_message_type": "geometry_msgs/msg/Twist"
+            }
+        ]
+    }
+}
