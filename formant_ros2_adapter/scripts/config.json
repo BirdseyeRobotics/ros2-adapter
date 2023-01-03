@@ -3,11 +3,13 @@
         "subscribers": [
             {
                 "ros2_topic": "/bird_output_compressed",
-                "formant_stream": "bird.image"
+                "formant_stream": "bird.image",
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
                 "ros2_topic": "/windshield_image",
-                "formant_stream": "windshield.image"
+                "formant_stream": "windshield.image",
+                "ros2_message_type": "sensor_msgs/msg/Image"
             }
         ],
         "publishers": [
@@ -25,7 +27,23 @@
                 "formant_stream": "joystick",
                 "ros2_topic": "/odrive/cmd_vel",
                 "ros2_message_type": "geometry_msgs/msg/Twist"
+            },
+            {
+                "formant_stream": "spinner",
+                "ros2_topic": "/motors/set_spinner_vel",
+                "ros2_message_type": "std_msgs/msg/Float32"
             }
-        ]
+        ],
+        "localization": {
+            "formant_stream": "localization",
+            "base_reference_frame": "map",
+            "odometry_subscriber_ros2_topic": "/odom",
+            "map_subscriber_ros2_topic": "/map",
+            "point_cloud_subscriber_ros2_topics": ["/scan", "/stereo/depth/points"],
+            "path_subscriber_ros2_topic": "/plan",
+            "goal_subscriber_ros2_topic": "/goal_pose",
+            "goal_publisher_ros2_topic": "/goal_pose",
+            "cancel_goal_publisher_ros2_topic": "/move_base/cancel"
+        }
     }
 }
