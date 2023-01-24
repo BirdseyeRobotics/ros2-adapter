@@ -10,6 +10,26 @@
                 "ros2_topic": "/windshield_image",
                 "formant_stream": "windshield.image",
                 "ros2_message_type": "sensor_msgs/msg/Image"
+            },
+            {
+                "formant_stream": "odrive_right_raw_odom_velocity",
+                "ros2_topic": "/odrive/right/raw_odom/velocity",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_left_raw_odom_velocity",
+                "ros2_topic": "/odrive/left/raw_odom/velocity",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_right_raw_odom_encoder",
+                "ros2_topic": "/odrive/right/raw_odom/encoder",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_left_raw_odom_encoder",
+                "ros2_topic": "/odrive/left/raw_odom/encoder",
+                "ros2_message_type": "std_msgs/msg/Float32"
             }
         ],
         "publishers": [
@@ -57,26 +77,6 @@
                 "formant_stream": "get_current_pose",
                 "ros2_topic": "/get_current_pose",
                 "ros2_message_type": "std_msgs/msg/Bool"
-            },
-            {
-                "formant_stream": "odrive_right_raw_odom_velocity",
-                "ros2_topic": "/odrive/right/raw_odom/velocity",
-                "ros2_message_type": "std_msgs/msg/Float32"
-            },
-            {
-                "formant_stream": "odrive_left_raw_odom_velocity",
-                "ros2_topic": "/odrive/left/raw_odom/velocity",
-                "ros2_message_type": "std_msgs/msg/Float32"
-            },
-            {
-                "formant_stream": "odrive_right_raw_odom_encoder",
-                "ros2_topic": "/odrive/right/raw_odom/encoder",
-                "ros2_message_type": "std_msgs/msg/Float32"
-            },
-            {
-                "formant_stream": "odrive_left_raw_odom_encoder",
-                "ros2_topic": "/odrive/left/raw_odom/encoder",
-                "ros2_message_type": "std_msgs/msg/Float32"
             }
         ],
         "localization": {
