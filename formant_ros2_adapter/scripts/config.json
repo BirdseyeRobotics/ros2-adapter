@@ -32,13 +32,58 @@
                 "formant_stream": "spinner",
                 "ros2_topic": "/motors/set_spinner_vel",
                 "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "capture_chicken_image",
+                "ros2_topic": "/capture_chicken_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "capture_dead_image",
+                "ros2_topic": "/capture_dead_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "capture_downer_image",
+                "ros2_topic": "/capture_downer_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "capture_image",
+                "ros2_topic": "/capture_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "get_current_pose",
+                "ros2_topic": "/get_current_pose",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "odrive_right_raw_odom_velocity",
+                "ros2_topic": "/odrive/right/raw_odom/velocity",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_left_raw_odom_velocity",
+                "ros2_topic": "/odrive/left/raw_odom/velocity",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_right_raw_odom_encoder",
+                "ros2_topic": "/odrive/right/raw_odom/encoder",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_left_raw_odom_encoder",
+                "ros2_topic": "/odrive/left/raw_odom/encoder",
+                "ros2_message_type": "std_msgs/msg/Float32"
             }
         ],
         "localization": {
             "formant_stream": "localization",
             "base_reference_frame": "map",
             "odometry_subscriber_ros2_topic": "/odom",
-            "map_subscriber_ros2_topic": "/map",
+            "map_subscriber_ros2_topic": "/local_costmap/costmap",
             "point_cloud_subscriber_ros2_topics": ["/scan", "/stereo/depth/points"],
             "path_subscriber_ros2_topic": "/plan",
             "goal_subscriber_ros2_topic": "/goal_pose",
