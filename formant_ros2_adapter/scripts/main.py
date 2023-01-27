@@ -21,6 +21,8 @@ from formant.sdk.agent.v1.localization.types import (
     Transform as FTransform,
     Goal as FGoal,
     Odometry as FOdometry,
+    Vector3 as FVector3,
+    Quaternion as FQuaternion
 )
 
 import rclpy
@@ -76,6 +78,7 @@ from geometry_msgs.msg import (
 )
 
 from nav_msgs.msg import Odometry, OccupancyGrid, Path
+from nav2_msgs.msg import Costmap
 
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
@@ -752,17 +755,51 @@ class ROS2Adapter:
                 msg, self.config["localization"]["base_reference_frame"]
             )
             self.localization_manager.update_odometry(odometry)
+        elif msg_type == PoseWithCovarianceStamped:
+            print("PoseWithCovarianceStamped message type")
+
+            # ROS types
+            ros_pose = msg.pose.pose
+
+            # Formant types
+            odometry = FOdometry(pose=FTransform.from_ros_pose(ros_pose))
+            odometry.transform_to_world = self.lookup_transform(
+                msg, self.config["localization"]["base_reference_frame"]
+            )
+
+            self.localization_manager.update_odometry(odometry)
         else:
             print("WARNING: Unknown odom type", msg_type)
 
     def localization_map_callback(self, msg):
         msg_type = type(msg)
         if msg_type is OccupancyGrid:
-            map = FMap.from_ros(msg)
-            map.transform_to_world = self.lookup_transform(
+            formant_map = FMap.from_ros(msg)
+            formant_map.transform_to_world = self.lookup_transform(
                 msg, self.config["localization"]["base_reference_frame"]
             )
-            self.localization_manager.update_map(map)
+            self.localization_manager.update_map(formant_map)
+        elif msg_type is Costmap:
+            print("Costmap message type")
+
+            # ROS types
+            ros_resolution = msg.metadata.resolution
+            ros_width = msg.metadata.size_x
+            ros_height = msg.metadata.size_y
+            ros_origin = msg.metadata.origin
+            ros_origin_position = ros_origin.position
+            ros_origin_orientation = ros_origin.orientation
+
+            # Formant types
+            formant_map = FMap(
+                resolution=ros_resolution,
+                width=ros_width,
+                height=ros_height,
+                origin=FTransform.from_ros_pose(ros_origin),
+                occupancy_grid_data=msg.data
+            )
+
+            self.localization_manager.update_map(formant_map)
         else:
             print("WARNING: Unknown map type", msg_type)
 
@@ -1344,28 +1381,28 @@ class ROS2Adapter:
             ros2_msg.data = np.float64(msg_value).item()
         elif ros2_msg_type == "Int8":
             ros2_msg = Int8()
-            ros2_msg.data = np.int8(msg_value)
+            ros2_msg.data = np.int8(msg_value).item()
         elif ros2_msg_type == "Int16":
             ros2_msg = Int16()
-            ros2_msg.data = np.int16(msg_value)
+            ros2_msg.data = np.int16(msg_value).item()
         elif ros2_msg_type == "Int32":
             ros2_msg = Int32()
-            ros2_msg.data = np.int32(msg_value)
+            ros2_msg.data = np.int32(msg_value).item()
         elif ros2_msg_type == "Int64":
             ros2_msg = Int64()
-            ros2_msg.data = np.int64(msg_value)
+            ros2_msg.data = np.int64(msg_value).item()
         elif ros2_msg_type == "UInt8":
             ros2_msg = UInt8()
-            ros2_msg.data = np.uint8(msg_value)
+            ros2_msg.data = np.uint8(msg_value).item()
         elif ros2_msg_type == "UInt16":
             ros2_msg = UInt16()
-            ros2_msg.data = np.uint16(msg_value)
+            ros2_msg.data = np.uint16(msg_value).item()
         elif ros2_msg_type == "UInt32":
             ros2_msg = UInt32()
-            ros2_msg.data = np.uint32(msg_value)
+            ros2_msg.data = np.uint32(msg_value).item()
         elif ros2_msg_type == "UInt64":
             ros2_msg = UInt64()
-            ros2_msg.data = np.uint64(msg_value)
+            ros2_msg.data = np.uint64(msg_value).item()
         elif ros2_msg_type == "String":
             ros2_msg = String()
             ros2_msg.data = str(msg_value)
