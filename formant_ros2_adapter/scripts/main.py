@@ -184,10 +184,14 @@ class ROS2Adapter:
         rclpy.shutdown()
 
     def update_adapter_configuration(self):
+        print("Getting Adapter Configuration")
         # Load config from either the adapter config or the config.json file
         try:
             adapters = self.fclient.get_agent_configuration().document.adapters
+            for adapter in adapters:
+                print(str(adapter))
             config = json.loads(adapters[0].configuration)
+            print("Using config: %s" % str(config))
         except:
             # Otherwise, load from the config.json file shipped with the adapter
             with open("config.json") as f:
@@ -195,15 +199,20 @@ class ROS2Adapter:
 
             print("INFO: Loaded config from config.json file")
 
+        print("Validating configuration")
         # Validate configuration based on schema
-        with open("config_schema.json") as f:
-            try:
-                self.config_schema = json.load(f)
-                print("INFO: Loaded config schema from config_schema.json file")
-            except:
-                print("ERROR: Could not load config schema. Is the file valid json?")
-                return
-
+        try:
+            with open("config_schema.json") as f:
+                try:
+                    self.config_schema = json.load(f)
+                    print("INFO: Loaded config schema from config_schema.json file")
+                except:
+                    print("ERROR: Could not load config schema. Is the file valid json?")
+                    return
+                finally:
+                    print("Errored out due to issue in config")
+        except Exception as e:
+            print("Error validating config: %s" % str(e))
         print("INFO: Validating config...")
 
         # Runt the validation check
@@ -492,7 +501,6 @@ class ROS2Adapter:
             "formant_stream" not in localization_config
             or "base_reference_frame" not in localization_config
             or "odometry_subscriber_ros2_topic" not in localization_config
-            or "map_subscriber_ros2_topic" not in localization_config
         ):
             print("WARNING: Localization config is missing required fields")
             return
@@ -662,7 +670,10 @@ class ROS2Adapter:
             print("INFO: TF ingestion not setup.")
             return
         for subscriber in self.tf_subscribers:
-            subscriber.destroy_subscriber()
+            try:
+                subscriber.destroy_subscriber()
+            except:
+                pass
         self.tf_subscribers = []
 
         print("INFO: Destroyed existing tf subscribers")
@@ -686,8 +697,10 @@ class ROS2Adapter:
         # Remove any existing numeric set subscribers and clear the buffer
         for subscriber_list in self.numeric_set_subscribers.values():
             for subscriber in subscriber_list:
-                subscriber.destroy_subscriber()
-
+                try:
+                    subscriber.destroy_subscriber()
+                except:
+                    pass
         self.numeric_set_subscribers = {}
         self.numeric_set_buffer = {}
 
@@ -1041,6 +1054,7 @@ class ROS2Adapter:
         # Get the original message type
         msg_type = type(msg)
 
+        path = ""
         # If there is a path, get the value from the path
         if "ros2_message_path" in subscriber_config:
             path = subscriber_config["ros2_message_path"]
@@ -1057,8 +1071,8 @@ class ROS2Adapter:
                 return
 
         # Get the label and unit
-        label = subscriber_config["label"]
-        unit = subscriber_config["unit"]
+        label = subscriber_config.get("label",path)
+        unit = subscriber_config.get("unit","")
 
         # If the message has a data attribute, use that
         if hasattr(msg, "data"):
