@@ -2,7 +2,7 @@
     "ros2_adapter_configuration": {
         "subscribers": [
             {
-                "ros2_topic": "/bird_output_compressed,"
+                "ros2_topic": "/bird_output_compressed",
                 "formant_stream": "bird.image",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
