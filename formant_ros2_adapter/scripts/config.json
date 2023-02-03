@@ -2,14 +2,14 @@
     "ros2_adapter_configuration": {
         "subscribers": [
             {
-                "ros2_topic": "/bird_output_compressed",
+                "ros2_topic": "/bird_output_compressed,"
                 "formant_stream": "bird.image",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
-                "ros2_topic": "/windshield_image",
+                "ros2_topic": "/windshield_camera/image_raw/compressed",
                 "formant_stream": "windshield.image",
-                "ros2_message_type": "sensor_msgs/msg/Image"
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
                 "formant_stream": "odrive_right_raw_odom_velocity",
