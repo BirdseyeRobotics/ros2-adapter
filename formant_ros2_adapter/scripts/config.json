@@ -2,12 +2,12 @@
     "ros2_adapter_configuration": {
         "subscribers": [
             {
-                "ros2_topic": "/bird_output_compressed",
+                "ros2_topic": "/combined_imgs_compressed",
                 "formant_stream": "bird.image",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
-                "ros2_topic": "/windshield_camera/image_raw/compressed",
+                "ros2_topic": "/windshield_compressed_image",
                 "formant_stream": "windshield.image",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
