@@ -30,6 +30,16 @@
                 "formant_stream": "odrive_left_raw_odom_encoder",
                 "ros2_topic": "/odrive/left/raw_odom/encoder",
                 "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "cpu_temperature",
+                "ros2_topic": "/cpu_temperature",
+                "ros2_message_type": "std_msgs/msg/UInt16"
+            },
+            {
+                "formant_stream": "gpu_temperature",
+                "ros2_topic": "/gpu_temperature",
+                "ros2_message_type": "std_msgs/msg/UInt16"
             }
         ],
         "publishers": [
