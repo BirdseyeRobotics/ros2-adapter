@@ -7,7 +7,7 @@
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
-                "ros2_topic": "/windshield_compressed_image",
+                "ros2_topic": "/windshield_camera/image_raw/compressed",
                 "formant_stream": "windshield.image",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
