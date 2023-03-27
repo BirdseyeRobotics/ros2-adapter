@@ -7,7 +7,7 @@
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
-                "ros2_topic": "/windshield_compressed_image",
+                "ros2_topic": "/windshield_camera/image_raw/compressed",
                 "formant_stream": "windshield.image",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
@@ -40,6 +40,21 @@
                 "formant_stream": "gpu_temperature",
                 "ros2_topic": "/gpu_temperature",
                 "ros2_message_type": "std_msgs/msg/UInt16"
+            },
+            {
+                "formant_stream": "back_vslam_frame_interval",
+                "ros2_topic": "/back_vslam/frame_interval",
+                "ros2_message_type": "std_msgs/msg/Float64"
+            },
+            {
+                "formant_stream": "front_vslam_frame_interval",
+                "ros2_topic": "/front_vslam/frame_interval",
+                "ros2_message_type": "std_msgs/msg/Float64"
+            },
+            {
+                "formant_stream": "windshield_camera_frame_interval",
+                "ros2_topic": "/windshield_camera/frame_interval",
+                "ros2_message_type": "std_msgs/msg/Float64"
             }
         ],
         "publishers": [
