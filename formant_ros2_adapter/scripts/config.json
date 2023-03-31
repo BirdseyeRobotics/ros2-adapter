@@ -55,6 +55,21 @@
                 "formant_stream": "windshield_camera_frame_interval",
                 "ros2_topic": "/windshield_camera/frame_interval",
                 "ros2_message_type": "std_msgs/msg/Float64"
+            },
+	        {
+                "formant_stream": "disable_all_movement",
+                "ros2_topic": "/disable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+	        {
+                "formant_stream": "enable_all_movement",
+                "ros2_topic": "/enable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+	        {
+                "formant_stream": "keep_alive_all_movement",
+                "ros2_topic": "/keep_alive_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
             }
         ],
         "publishers": [
