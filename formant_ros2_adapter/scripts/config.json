@@ -3,7 +3,7 @@
         "subscribers": [
             {
                 "ros2_topic": "/combined_imgs_compressed",
-                "formant_stream": "bird.image",
+                "formant_stream": "combined_imgs_compressed",
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
