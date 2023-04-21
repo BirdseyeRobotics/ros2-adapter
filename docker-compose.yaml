@@ -10,6 +10,7 @@ services:
     stop_grace_period: 1s
     volumes:
       - "/var/lib/formant:/var/lib/formant"
+      - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
@@ -28,6 +29,7 @@ services:
       - "/usr/bin/docker:/usr/bin/docker"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/formant:/var/lib/formant"
+      - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
