@@ -84,6 +84,31 @@
                 "ros2_message_type": "std_msgs/msg/Bool"
             },
             {
+                "formant_stream": "flag1",
+                "ros2_topic": "/navigate_to_numbered_flag1",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag2",
+                "ros2_topic": "/navigate_to_numbered_flag2",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag3",
+                "ros2_topic": "/navigate_to_numbered_flag3",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag4",
+                "ros2_topic": "/navigate_to_numbered_flag4",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag5",
+                "ros2_topic": "/navigate_to_numbered_flag5",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
                 "formant_stream": "joystick",
                 "ros2_topic": "/odrive/cmd_vel",
                 "ros2_message_type": "geometry_msgs/msg/Twist"
