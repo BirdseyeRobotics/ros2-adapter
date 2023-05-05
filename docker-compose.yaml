@@ -30,6 +30,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/formant:/var/lib/formant"
       - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
+      - "/home/birdseye/Birdseye:/home/birdseye/Birdseye"
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
