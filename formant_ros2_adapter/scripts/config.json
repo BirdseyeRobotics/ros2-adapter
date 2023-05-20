@@ -1,1 +1,189 @@
-{}
+{
+    "ros2_adapter_configuration": {
+        "subscribers": [
+            {
+                "ros2_topic": "/right_camera/image_raw/compressed",
+                "formant_stream": "right.camera",
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
+            },
+            {
+                "ros2_topic": "/combined_imgs_compressed",
+                "formant_stream": "combined_imgs_compressed",
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
+            },
+            {
+                "ros2_topic": "/windshield_camera/image_raw/compressed",
+                "formant_stream": "windshield.image",
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
+            },
+            {
+                "formant_stream": "odrive_right_raw_odom_velocity",
+                "ros2_topic": "/odrive/right/raw_odom/velocity",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_left_raw_odom_velocity",
+                "ros2_topic": "/odrive/left/raw_odom/velocity",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_right_raw_odom_encoder",
+                "ros2_topic": "/odrive/right/raw_odom/encoder",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "odrive_left_raw_odom_encoder",
+                "ros2_topic": "/odrive/left/raw_odom/encoder",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "cpu_temperature",
+                "ros2_topic": "/cpu_temperature",
+                "ros2_message_type": "std_msgs/msg/UInt16"
+            },
+            {
+                "formant_stream": "gpu_temperature",
+                "ros2_topic": "/gpu_temperature",
+                "ros2_message_type": "std_msgs/msg/UInt16"
+            },
+            {
+                "formant_stream": "back_vslam_frame_interval",
+                "ros2_topic": "/back_vslam/frame_interval",
+                "ros2_message_type": "std_msgs/msg/Float64"
+            },
+            {
+                "formant_stream": "front_vslam_frame_interval",
+                "ros2_topic": "/front_vslam/frame_interval",
+                "ros2_message_type": "std_msgs/msg/Float64"
+            },
+            {
+                "formant_stream": "windshield_camera_frame_interval",
+                "ros2_topic": "/windshield_camera/frame_interval",
+                "ros2_message_type": "std_msgs/msg/Float64"
+            },
+            {
+                "formant_stream": "disable_all_movement",
+                "ros2_topic": "/disable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "enable_all_movement",
+                "ros2_topic": "/enable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "keep_alive_all_movement",
+                "ros2_topic": "/keep_alive_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "robot_lat_lon",
+                "ros2_topic": "/robot_lat_lon",
+                "ros2_message_type": "sensor_msgs/msg/NavSatFix"
+            },
+            {
+                "formant_stream": "dead_bird_image",
+                "ros2_topic": "/dead_bird/image",
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
+            },
+            {
+                "formant_stream": "dead_bird_odom",
+                "ros2_topic": "/dead_bird/odom",
+                "ros2_message_type": "nav_msgs/msg/Odometry"
+            },
+            {
+                "formant_stream": "dead_bird_lat_lon",
+                "ros2_topic": "/dead_bird/lat_lon",
+                "ros2_message_type": "sensor_msgs/msg/NavSatFix"
+            },
+            {
+                "formant_stream": "dead_bird_costmap",
+                "ros2_topic": "/dead_bird/global_costmap",
+                "ros2_message_type": "nav2_msgs/msg/Costmap"
+            }
+        ],
+        "publishers": [
+            {
+                "formant_stream": "estop",
+                "ros2_topic": "/disable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "unlock",
+                "ros2_topic": "/enable_all_movement",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag1",
+                "ros2_topic": "/navigate_to_numbered_flag1",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag2",
+                "ros2_topic": "/navigate_to_numbered_flag2",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag3",
+                "ros2_topic": "/navigate_to_numbered_flag3",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag4",
+                "ros2_topic": "/navigate_to_numbered_flag4",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "flag5",
+                "ros2_topic": "/navigate_to_numbered_flag5",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "joystick",
+                "ros2_topic": "/odrive/cmd_vel",
+                "ros2_message_type": "geometry_msgs/msg/Twist"
+            },
+            {
+                "formant_stream": "spinner",
+                "ros2_topic": "/motors/set_spinner_vel",
+                "ros2_message_type": "std_msgs/msg/Float32"
+            },
+            {
+                "formant_stream": "capture_chicken_image",
+                "ros2_topic": "/capture_chicken_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "capture_dead_image",
+                "ros2_topic": "/capture_dead_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "capture_downer_image",
+                "ros2_topic": "/capture_downer_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "capture_image",
+                "ros2_topic": "/capture_image",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "get_current_pose",
+                "ros2_topic": "/get_current_pose",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            }
+        ],
+        "localization": {
+            "formant_stream": "localization",
+            "base_reference_frame": "map",
+            "odometry_subscriber_ros2_topic": "/odom",
+            "map_subscriber_ros2_topic": "/global_costmap/costmap",
+            "point_cloud_subscriber_ros2_topics": ["/scan", "/stereo/depth/points"],
+            "path_subscriber_ros2_topic": "/plan",
+            "goal_subscriber_ros2_topic": "/goal_pose",
+            "goal_publisher_ros2_topic": "/goal_pose",
+            "cancel_goal_publisher_ros2_topic": "/move_base/cancel"
+        }
+    }
+}
