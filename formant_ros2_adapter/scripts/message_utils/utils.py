@@ -5,7 +5,10 @@ import json
 import codecs
 import numpy as np
 
-
+try:
+    bool_type = np.bool
+except Exception:
+    bool_type = np.bool_
 NUMPY_DTYPE_TO_BUILTIN_MAPPING = {
     np.uint8: int,
     np.uint16: int,
@@ -17,11 +20,12 @@ NUMPY_DTYPE_TO_BUILTIN_MAPPING = {
     np.int64: int,
     np.float32: float,
     np.float64: float,
-    np.bool: bool,
+    bool_type: bool,
+    bool: bool,
 }
 
 
-def get_message_type_from_string(message_type_string: str):
+def get_ros2_type_from_string(message_type_string: str):
     """
     Returns a ROS2 message type for the provided ROS2 message type string
     """
@@ -30,12 +34,18 @@ def get_message_type_from_string(message_type_string: str):
         module_name = ".".join(path[:-1])
         module = importlib.import_module(module_name)
         return getattr(module, path[-1])
-    except:
-        print("Couldn't import ROS2 message type from string: ", message_type_string)
+    except Exception as e:
+        print(
+            "WARNING: Couldn't import ROS2 message type from string: %s %s"
+            % (message_type_string, str(e)),
+        )
         return None
 
 
 def parse(m):
+    if type(m) == float:
+        if float(m) != float(m):
+            return None
     if type(m) in [bool, str, int, float]:
         return m
     elif type(m) == bytes:
@@ -44,6 +54,8 @@ def parse(m):
         return NUMPY_DTYPE_TO_BUILTIN_MAPPING[type(m)](m)
     elif type(m) in [list, array.array, np.ndarray]:
         return [parse(o) for o in m]
+    elif m is None:
+        return None
     else:
         return {k: parse(getattr(m, k)) for k in m._fields_and_field_types}
 
