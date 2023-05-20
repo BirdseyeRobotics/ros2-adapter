@@ -61,25 +61,45 @@
                 "ros2_topic": "/windshield_camera/frame_interval",
                 "ros2_message_type": "std_msgs/msg/Float64"
             },
-	    {
+            {
                 "formant_stream": "disable_all_movement",
                 "ros2_topic": "/disable_all_movement",
                 "ros2_message_type": "std_msgs/msg/Bool"
             },
-	    {
+            {
                 "formant_stream": "enable_all_movement",
                 "ros2_topic": "/enable_all_movement",
                 "ros2_message_type": "std_msgs/msg/Bool"
             },
-	    {
+            {
                 "formant_stream": "keep_alive_all_movement",
                 "ros2_topic": "/keep_alive_all_movement",
                 "ros2_message_type": "std_msgs/msg/Bool"
             },
-	    {
+            {
                 "formant_stream": "robot_lat_lon",
                 "ros2_topic": "/robot_lat_lon",
                 "ros2_message_type": "sensor_msgs/msg/NavSatFix"
+            },
+            {
+                "formant_stream": "dead_bird_image",
+                "ros2_topic": "/dead_bird/image",
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
+            },
+            {
+                "formant_stream": "dead_bird_odom",
+                "ros2_topic": "/dead_bird/odom",
+                "ros2_message_type": "nav_msgs/msg/Odometry"
+            },
+            {
+                "formant_stream": "dead_bird_lat_lon",
+                "ros2_topic": "/dead_bird/lat_lon",
+                "ros2_message_type": "sensor_msgs/msg/NavSatFix"
+            },
+            {
+                "formant_stream": "dead_bird_costmap",
+                "ros2_topic": "/dead_bird/global_costmap",
+                "ros2_message_type": "nav2_msgs/msg/Costmap"
             }
         ],
         "publishers": [
