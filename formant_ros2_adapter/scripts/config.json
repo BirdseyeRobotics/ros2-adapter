@@ -87,7 +87,7 @@
                 "ros2_message_type": "sensor_msgs/msg/CompressedImage"
             },
             {
-                "formant_stream": "dead_bird_odom",
+                "formant_stream": "dead_bird_odom_v_1_0",
                 "ros2_topic": "/dead_bird/odom",
                 "ros2_message_type": "nav_msgs/msg/Odometry"
             },
