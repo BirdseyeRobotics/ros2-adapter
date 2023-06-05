@@ -172,7 +172,22 @@
                 "formant_stream": "get_current_pose",
                 "ros2_topic": "/get_current_pose",
                 "ros2_message_type": "std_msgs/msg/Bool"
-            }
+            },
+            {
+                "formant_stream": "toggle_bump_stop",
+                "ros2_topic": "/toggle_bump_stop",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "start_mission",
+                "ros2_topic": "/start_mission",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+            {
+                "formant_stream": "end_mission",
+                "ros2_topic": "/end_mission",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
         ],
         "localization": {
             "formant_stream": "localization",
