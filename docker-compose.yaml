@@ -14,35 +14,5 @@ services:
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
-    depends_on:
-      - formant-agent
-
-  formant-agent:
-    image: formant/agent
-    container_name: formant-agent
-    network_mode: host
-    pid: host
-    privileged: true
-    restart: always
-    stop_grace_period: 1s
-    volumes:
-      - "/usr/bin/docker:/usr/bin/docker"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/var/lib/formant:/var/lib/formant"
-      - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
-      - "/home/birdseye/Birdseye:/home/birdseye/Birdseye"
-    environment:
-      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
-      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
-
-
-# uid=$(id -u formant)
-# gid=$(id -g formant)
-#     --user $uid:$gid \
-#     --group-add audio \
-#     --group-add video \
-#     $ros_master_config \
-#     $catkin_ws_config \
-#     formant/agent:$tag
 
 
