@@ -35,14 +35,3 @@ services:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
 
-
-# uid=$(id -u formant)
-# gid=$(id -g formant)
-#     --user $uid:$gid \
-#     --group-add audio \
-#     --group-add video \
-#     $ros_master_config \
-#     $catkin_ws_config \
-#     formant/agent:$tag
-
-
