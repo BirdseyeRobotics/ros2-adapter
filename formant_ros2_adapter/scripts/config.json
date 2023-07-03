@@ -9,7 +9,8 @@
             {
                 "ros2_topic": "/combined_imgs_compressed",
                 "formant_stream": "combined_imgs_compressed",
-                "ros2_message_type": "sensor_msgs/msg/CompressedImage"
+                "ros2_message_type": "sensor_msgs/msg/CompressedImage",
+		"ros2_qos_profile": "SENSOR_DATA"
             },
             {
                 "ros2_topic": "/windshield_camera/image_raw/compressed",
@@ -171,6 +172,11 @@
             {
                 "formant_stream": "get_current_pose",
                 "ros2_topic": "/get_current_pose",
+                "ros2_message_type": "std_msgs/msg/Bool"
+            },
+	    {
+                "formant_stream": "disable_bump_stop",
+                "ros2_topic": "/toggle_bump_stop",
                 "ros2_message_type": "std_msgs/msg/Bool"
             }
         ],
