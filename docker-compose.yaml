@@ -34,4 +34,5 @@ services:
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+      FORMANT_DEBUG: "true"
 
