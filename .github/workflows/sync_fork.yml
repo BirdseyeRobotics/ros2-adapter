@@ -22,20 +22,10 @@ jobs:
         run: |
           branch_name="sync-$(date +%s)" # Create a new branch with a timestamp
           git checkout -b "$branch_name" origin/master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Merge upstream changes and exclude files
-        run: |
           git remote add upstream https://github.com/FormantIO/ros2-adapter.git
           git fetch upstream
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
           git checkout HEAD -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Create pull request
-        run: |
           gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
