@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
+      - name: Set Git committer identity
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+        
       - name: Create a new branch
         run: |
           branch_name="sync-$(date +%s)" # Create a new branch with a timestamp
