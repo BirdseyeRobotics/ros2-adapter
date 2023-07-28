@@ -29,10 +29,9 @@ jobs:
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
           git checkout origin/master -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
 
-      - name: Commit changes
+      - name: Create pull request
         run: |
-          git add .
-          git commit -m "Sync with original repository, excluding Docker file modifications"
-          git push
+          branch_name=$(git rev-parse --abbrev-ref HEAD)
+          gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
