@@ -37,6 +37,8 @@ jobs:
           git add .
           git commit -m "Sync with original repository, excluding Docker file modifications"
           git push origin "$new_branch_name"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Create pull request
         run: |
