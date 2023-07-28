@@ -29,6 +29,11 @@ jobs:
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
           git checkout origin/master -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
 
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Sync with original repository, excluding Docker file modifications"
+
       - name: Create pull request
         run: |
           branch_name=$(git rev-parse --abbrev-ref HEAD)
