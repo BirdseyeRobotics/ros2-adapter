@@ -32,6 +32,6 @@ jobs:
       - name: Create pull request
         run: |
           branch_name=$(git rev-parse --abbrev-ref HEAD)
-          gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications"
+          gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
