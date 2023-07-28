@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
-  
+
 permissions: write-all
 
 jobs:
@@ -14,21 +14,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/FormantIO/ros2-adapter.git
+
+      - name: Fetch upstream changes
+        run: git fetch upstream
+          
       - name: Set Git committer identity
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
-        
-      - name: Create a new branch
+    
+      - name: Merge upstream changes
         run: |
-          branch_name="sync-$(date +%s)" # Create a new branch with a timestamp
-          git checkout -b "$branch_name" origin/master
-          git remote add upstream https://github.com/FormantIO/ros2-adapter.git
-          git fetch upstream
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
-          git checkout HEAD -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
-          gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
+          git checkout origin/master -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Sync with original repository, excluding Docker file modifications"
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ github.token }}
