@@ -23,17 +23,13 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
-    
-      - name: Merge upstream changes
-        run: |
-          git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
-          git checkout origin/master -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
 
-      - name: Create a new branch and push changes
+      - name: Merge upstream changes and create a new branch and push changes
         run: |
           branch_name=$(git rev-parse --abbrev-ref HEAD)
           new_branch_name="sync-$(date +%s)" # Create a new branch with a timestamp
-          git checkout -b "$new_branch_name"
+          git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
+          git checkout -b "$new_branch_name" origin/master -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
           git add .
           git commit -m "Sync with original repository, excluding Docker file modifications"
           git push origin "$new_branch_name"
