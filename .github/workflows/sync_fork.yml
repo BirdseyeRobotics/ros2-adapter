@@ -29,14 +29,17 @@ jobs:
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
           git checkout origin/master -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
 
-      - name: Commit changes
-        run: |
-          git add .
-          git commit -m "Sync with original repository, excluding Docker file modifications"
-
-      - name: Create pull request
+      - name: Create a new branch and push changes
         run: |
           branch_name=$(git rev-parse --abbrev-ref HEAD)
-          gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
+          new_branch_name="sync-$(date +%s)" # Create a new branch with a timestamp
+          git checkout -b "$new_branch_name"
+          git add .
+          git commit -m "Sync with original repository, excluding Docker file modifications"
+          git push origin "$new_branch_name"
+        
+      - name: Create pull request
+        run: |
+          gh pr create --base origin/master --head "$new_branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
