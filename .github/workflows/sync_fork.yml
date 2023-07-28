@@ -10,12 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
       - name: Create a new branch
         run: |
           branch_name="sync-$(date +%s)" # Create a new branch with a timestamp
           git checkout -b "$branch_name" origin/master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Merge upstream changes and exclude files
         run: |
           git remote add upstream https://github.com/FormantIO/ros2-adapter.git
@@ -26,6 +30,7 @@ jobs:
           git commit -m "Sync with original repository, excluding Docker file modifications"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Create pull request
         run: |
           gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
