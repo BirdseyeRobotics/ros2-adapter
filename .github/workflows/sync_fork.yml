@@ -33,6 +33,7 @@ jobs:
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
           git add .
           git commit -m "Sync with original repository, excluding Docker file modifications"
+          git push origin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
