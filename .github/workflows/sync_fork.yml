@@ -29,11 +29,8 @@ jobs:
         run: |
           git remote add upstream https://github.com/FormantIO/ros2-adapter.git
           git fetch upstream
-          git checkout HEAD -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
           git merge --strategy-option=theirs --allow-unrelated-histories upstream/master
-          git add .
-          git commit -m "Sync with original repository, excluding Docker file modifications"
-          git push origin
+          git checkout HEAD -- docker-compose.yaml Dockerfile formant_ros2_adapter/scripts/config.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
@@ -42,3 +39,4 @@ jobs:
           gh pr create --base origin/master --head "$branch_name" --title "Sync with original repository, excluding Docker file modifications" --body ""
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
