@@ -31,6 +31,7 @@ services:
       - "/var/lib/formant:/var/lib/formant"
       - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
       - "/home/birdseye/Birdseye:/home/birdseye/Birdseye"
+      - "/home/birdseye/.ssh/:/root/.ssh"
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
