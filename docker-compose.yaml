@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   ros2-adapter:
-    image: berobotics/formant-ros2-adapter@sha256:ad7ebc06fc11b0b3aebb8a350210d3bdf0001143c9a07e0d4b35bbe20a2d5f97
+    image: berobotics/formant-ros2-adapter@sha256:9bb73592d5c35c63ec0bd40bb86f3680879cf8f18f20ad0fa65b19ca1313b262
     container_name: formant-ros2-adapter
     network_mode: host
     pid: host
