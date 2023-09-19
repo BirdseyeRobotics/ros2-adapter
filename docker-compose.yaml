@@ -1,8 +1,8 @@
 version: "3.3"
 services:
   ros2-adapter:
-      
-    build: .
+    image: berobotics/formant-ros2-adapter@sha256:ad7ebc06fc11b0b3aebb8a350210d3bdf0001143c9a07e0d4b35bbe20a2d5f97
+    container_name: formant-ros2-adapter
     network_mode: host
     pid: host
     privileged: true
@@ -18,7 +18,7 @@ services:
       - formant-agent
 
   formant-agent:
-    image: formant/agent
+    image: formant/agent@sha256:1f98a8c45a241b30a7090284b871f5abb81a2b1a9939d1cbe1931b299c5d62c1
     container_name: formant-agent
     network_mode: host
     pid: host
