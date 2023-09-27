@@ -14,7 +14,7 @@ services:
     environment:
       ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
-      FORMANT_ENABLE_ADAPTIVE_BITRATE: false
+      FORMANT_ENABLE_ADAPTIVE_BITRATE: 'false'
     depends_on:
       - formant-agent
 
@@ -38,5 +38,5 @@ services:
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
       FORMANT_DEBUG: "true"
       WEBRTC_INTERFACE: "wlp0s20f3"
-      FORMANT_ENABLE_ADAPTIVE_BITRATE: false
+      FORMANT_ENABLE_ADAPTIVE_BITRATE: 'false'
 
