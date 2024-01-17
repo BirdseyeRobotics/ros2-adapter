@@ -1,4 +1,4 @@
-numpy>=1.22.0
+numpy>=1.19.3
 formant>=1.114.39
 jsonschema
 python-lzf
