@@ -1,7 +1,11 @@
 version: "3.3"
 services:
   ros2-adapter:
-    image: berobotics/formant-ros2-adapter@sha256:9bb73592d5c35c63ec0bd40bb86f3680879cf8f18f20ad0fa65b19ca1313b262
+    #image: berobotics/formant-ros2-adapter@sha256:083344ff32d4a1834b9cb7ef8e118965be28e9a5ed0ebb7652d19ebd31e09e42
+    #image: berobotics/formant-ros2-adapter@sha256:9bb73592d5c35c63ec0bd40bb86f3680879cf8f18f20ad0fa65b19ca1313b262
+    # image: berobotics/formant-ros2-adapter:latest
+    image: berobotics/formant-ros2-adapter@sha256:sha256:4038b96b28873d24fbefc3c339584ff2107ed0ea04d241a1596fa563153a86b4
+    #build: .
     container_name: formant-ros2-adapter
     network_mode: host
     pid: host
@@ -19,7 +23,7 @@ services:
       - formant-agent
 
   formant-agent:
-    image: formant/agent@sha256:1f98a8c45a241b30a7090284b871f5abb81a2b1a9939d1cbe1931b299c5d62c1
+    image: formant/agent:latest
     container_name: formant-agent
     network_mode: host
     pid: host
@@ -39,4 +43,6 @@ services:
       FORMANT_DEBUG: "true"
       WEBRTC_INTERFACE: "wlp0s20f3"
       FORMANT_ENABLE_ADAPTIVE_BITRATE: 'false'
-
+      FORMANT_VIDEO_FRAMERATE: 12
+      FORMANT_OVERRIDE_BITRATE: 'true'
+      FORMANT_ENCODING_BITRATE: 512
