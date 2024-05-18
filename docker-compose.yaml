@@ -1,48 +1,8 @@
 version: "3.3"
 services:
   ros2-adapter:
-    #image: berobotics/formant-ros2-adapter@sha256:083344ff32d4a1834b9cb7ef8e118965be28e9a5ed0ebb7652d19ebd31e09e42
-    #image: berobotics/formant-ros2-adapter@sha256:9bb73592d5c35c63ec0bd40bb86f3680879cf8f18f20ad0fa65b19ca1313b262
-    # image: berobotics/formant-ros2-adapter:latest
-    image: berobotics/formant-ros2-adapter@sha256:sha256:4038b96b28873d24fbefc3c339584ff2107ed0ea04d241a1596fa563153a86b4
-    #build: .
-    container_name: formant-ros2-adapter
+    container_name: ros2-adapter
+    build: .
     network_mode: host
-    pid: host
-    privileged: true
-    restart: always
-    stop_grace_period: 1s
     volumes:
       - "/var/lib/formant:/var/lib/formant"
-      - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
-    environment:
-      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
-      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
-      FORMANT_ENABLE_ADAPTIVE_BITRATE: 'false'
-    depends_on:
-      - formant-agent
-
-  formant-agent:
-    image: formant/agent:latest
-    container_name: formant-agent
-    network_mode: host
-    pid: host
-    privileged: true
-    restart: always
-    stop_grace_period: 1s
-    volumes:
-      - "/usr/bin/docker:/usr/bin/docker"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/var/lib/formant:/var/lib/formant"
-      - "/home/birdseye/ros_bags:/home/birdseye/ros_bags"
-      - "/home/birdseye/Birdseye:/home/birdseye/Birdseye"
-      - "/home/birdseye/.ssh/:/root/.ssh"
-    environment:
-      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
-      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
-      FORMANT_DEBUG: "true"
-      WEBRTC_INTERFACE: "wlp0s20f3"
-      FORMANT_ENABLE_ADAPTIVE_BITRATE: 'false'
-      FORMANT_VIDEO_FRAMERATE: 12
-      FORMANT_OVERRIDE_BITRATE: 'true'
-      FORMANT_ENCODING_BITRATE: 512
