@@ -1,13 +1,14 @@
-FROM osrf/ros:humble-desktop
+FROM arm64v8/ros:jazzy-ros-core
 
 RUN apt-get update --fix-missing
 RUN apt-get install -y apt-utils 
 RUN apt-get install -y python3-dev python3-pip libffi-dev
-RUN apt-get install -y ros-humble-rmw-cyclonedds-cpp
-RUN apt-get install -y ros-humble-nav2-msgs
+RUN apt-get install -y ros-jazzy-rmw-cyclonedds-cpp
+RUN apt-get install -y ros-jazzy-nav2-msgs
 
 COPY ./requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN python3 -m pip config set global.break-system-packages true &&\
+    pip3 install -r requirements.txt --ignore-installed
 
 COPY . /app
 
